@@ -22,4 +22,4 @@ steps:
     azureSubscription: 'Free Trial(67f22ea0-845b-4ab1-bc60-d04b5ae5ef09)'
     appType: 'webApp'
     WebAppName: 'SampleEcomm'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/index.html'
+    packageForLinux: '/home/ecomm/*.html'
