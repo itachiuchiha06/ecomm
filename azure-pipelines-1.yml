@@ -1,0 +1,25 @@
+# HTML
+# Archive your static HTML project and save it with the build record.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(build.sourcesDirectory)'
+    includeRootFolder: false
+- task: PublishBuildArtifacts@1'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(1)(67f22ea0-845b-4ab1-bc60-d04b5ae5ef09)'
+    appType: 'webApp'
+    WebAppName: 'SampleEcomm'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
