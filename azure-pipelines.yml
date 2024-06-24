@@ -14,31 +14,11 @@ steps:
   inputs:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
-- task: PublishBuildArtifacts@1
 
-- task: Maven@4
-  inputs:
-    mavenPomFile: 'pom.xml'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    testRunTitle: 'sample test'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
-    checkStyleRunAnalysis: true
-    findBugsRunAnalysis: true
-    spotBugsRunAnalysis: true
     
-- task: AzureRmWebAppDeployment@4
+- task: AzureWebApp@1
   inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Free Trial(67f22ea0-845b-4ab1-bc60-d04b5ae5ef09)'
-        appType: 'webApp'
-        WebAppName: 'Web app'
-        deployToSlotOrASE: true
-        ResourceGroupName: 'SampleRG'
-        SlotName: 'production'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    azureSubscription: 'Free Trial(1)(67f22ea0-845b-4ab1-bc60-d04b5ae5ef09)'
+    appType: 'webAppLinux'
+    appName: 'Sample Ecomm'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
